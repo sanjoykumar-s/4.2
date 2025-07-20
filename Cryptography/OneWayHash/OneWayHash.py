@@ -8,6 +8,12 @@ def getSHA256Hash(data):
     hash = hashlib.sha256(data.encode())
     return hash.hexdigest()
 
+def getHash(data, choice):
+    if choice == '1':
+        return "MD5 hash : " + getMD5Hash(msg)
+    else if choice == '2':
+        return "SHA-256 hash: " + getSHA256Hash(msg)
+
 # Take message from user
 msg = input("Enter text to hash: ")
 
@@ -17,10 +23,5 @@ print("1. MD5")
 print("2. SHA-256")
 choice = input("Enter 1 or 2: ")
 
-# Compute hash based on user choice
-if choice == '1':
-    hash_val = getMD5Hash(msg)
-    print("MD5 Hash: " + hash_val)
-elif choice == '2':
-    hash_val = getSHA256Hash(msg)
-    print("SHA-256 Hash: " + hash_val)
+
+print(getHash(msg, choice))
